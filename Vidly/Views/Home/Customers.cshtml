@@ -1,8 +1,36 @@
-﻿
+﻿@model Vidly.ViewModels.RandomMoviesViewModel
 @{
     ViewBag.Title = "Customers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Customers</h2>
+
+<div>
+
+    @{ 
+        if (Model.Customers.Count == 0)
+        {
+            <text>We dont have customers registered yet.</text>
+        }
+        else
+        {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Customers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model.Customers)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customer.Name, "CustomerDetails", new { id = customer.Id })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+            }
+        }
+</div>
 
