@@ -15,25 +15,12 @@ namespace Vidly.Controllers
             return View();
         }
 
-        private List<Customer> _customers = new List<Customer>
-        {
-            new Customer{Name = "Albert", Id = 1},
-            new Customer {Name = "Jose", Id = 2},
-            new Customer {Name = "Juan", Id = 3}
-        };
-
-        private readonly List<Movie> _movies = new List<Movie>
-        {
-            new Movie {Name = "Shrek", Id = 1},
-            new Movie{Name = "John Wick", Id = 2}
-        };
-
         [Route("movies")]
         public ActionResult Movies()
         {
             var viewModel = new MoviesViewModel
             {
-                Movies = _movies
+                Movies = new Movie().GetMovies()
             };
             return View(viewModel);
         }
@@ -42,7 +29,7 @@ namespace Vidly.Controllers
         public ActionResult MovieDetails(int id)
         {
             Movie retMovie = null;
-            foreach(var movie in _movies)
+            foreach(var movie in new Movie().GetMovies())
             {
                 if(movie.Id == id)
                 {
@@ -63,7 +50,7 @@ namespace Vidly.Controllers
             var viewModel = new RandomMoviesViewModel
             {
                 Movie = new Movie(),
-                Customers = _customers
+                Customers = new Customer().GetCustomer()
             };
 
             return View(viewModel);
@@ -73,7 +60,7 @@ namespace Vidly.Controllers
         public ActionResult CustomerDetails(int id)
         {
             Customer retCustomer = null;
-            foreach(var customer in _customers)
+            foreach(var customer in new Customer().GetCustomer())
             {
                 if(customer.Id == id)
                 {

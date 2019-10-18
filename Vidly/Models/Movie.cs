@@ -10,5 +10,17 @@ namespace Vidly.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+
+        public List<Movie> GetMovies()
+        {
+            var list = new List<Movie>
+            {
+                new Movie() {Name = "Shrek", Id = 1},
+                new Movie() {Name = "John Wick", Id = 2}
+            };
+
+            return list;
+        }
+
     }
 }
