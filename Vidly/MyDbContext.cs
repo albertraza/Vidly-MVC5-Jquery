@@ -9,7 +9,7 @@ namespace Vidly
 {
     public class MyDbContext : DbContext
     {
-        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         public MyDbContext()
         {

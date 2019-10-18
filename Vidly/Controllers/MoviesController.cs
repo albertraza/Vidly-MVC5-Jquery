@@ -11,7 +11,7 @@ namespace Vidly.Controllers
     public class MoviesController : Controller
     {
 
-        public List<Movie> GetMovies()
+        public IEnumerable<Movie> GetMovies()
         {
             var list = new List<Movie>
             {
@@ -51,11 +51,7 @@ namespace Vidly.Controllers
         [Route("movies")]
         public ActionResult Index()
         {
-            var viewModel = new MoviesViewModel
-            {
-                Movies = GetMovies()
-            };
-            return View(viewModel);
+            return View(GetMovies());
         }
 
         [Route("movies/{pageIndex}/{sortBy}")]

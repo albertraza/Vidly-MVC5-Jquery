@@ -5,41 +5,39 @@ using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
+using System.Data.Entity;
 
 namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
-        public List<Customer> GetCustomer()
+
+        private MyDbContext _context;
+
+        public CustomersController()
         {
-            var list = new List<Customer>
-            {
-            new Customer{Name = "Albert", Id = 1},
-            new Customer {Name = "Jose", Id = 2},
-            new Customer {Name = "Juan", Id = 3}
-            };
-            return list;
+            _context = new MyDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
         }
 
         // GET: Customer
         [Route("customers")]
         public ActionResult Index()
         {
+            var customers = _context.Customers;
 
-            var viewModel = new RandomMoviesViewModel
-            {
-                Movie = new Movie(),
-                Customers = GetCustomer()
-            };
-
-            return View(viewModel);
+            return View(customers);
         }
 
         [Route("customers/detail/{id}")]
         public ActionResult CustomerDetails(int id)
         {
             Customer retCustomer = null;
-            foreach (var customer in GetCustomer())
+            foreach (var customer in _context.Customers)
             {
                 if (customer.Id == id)
                 {

@@ -1,4 +1,4 @@
-﻿@model Vidly.ViewModels.MoviesViewModel
+﻿@model IEnumerable<Vidly.Models.Movie>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,7 +7,7 @@
 <h2>Movies</h2>
 
 @{ 
-    if(Model.Movies.Count == 0)
+    if(!Model.Any())
     {
         <text>We dont have movies registered yet.</text>
     }
@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(var movie in Model.Movies)
+                @foreach(var movie in Model)
                 {
                     <tr>
                         <td>@Html.ActionLink(movie.Name, "MovieDetails", new { id = movie.Id })</td>
