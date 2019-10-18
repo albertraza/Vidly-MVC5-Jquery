@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Global.asax.cs">
@@ -146,6 +147,10 @@
     <Compile Include="Migrations\201910182107152_PopulateMembershipTypes.cs" />
     <Compile Include="Migrations\201910182107152_PopulateMembershipTypes.Designer.cs">
       <DependentUpon>201910182107152_PopulateMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910182116340_ApplyAnnotationToCustomerName.cs" />
+    <Compile Include="Migrations\201910182116340_ApplyAnnotationToCustomerName.Designer.cs">
+      <DependentUpon>201910182116340_ApplyAnnotationToCustomerName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -202,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -228,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910182107152_PopulateMembershipTypes.resx">
       <DependentUpon>201910182107152_PopulateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910182116340_ApplyAnnotationToCustomerName.resx">
+      <DependentUpon>201910182116340_ApplyAnnotationToCustomerName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
