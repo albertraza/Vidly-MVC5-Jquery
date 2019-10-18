@@ -135,6 +135,10 @@
     <Compile Include="Migrations\201910182002454_InitialModel.Designer.cs">
       <DependentUpon>201910182002454_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910182056561_AddIsSubscribedToNewsletter.cs" />
+    <Compile Include="Migrations\201910182056561_AddIsSubscribedToNewsletter.Designer.cs">
+      <DependentUpon>201910182056561_AddIsSubscribedToNewsletter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -207,6 +211,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910182002454_InitialModel.resx">
       <DependentUpon>201910182002454_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910182056561_AddIsSubscribedToNewsletter.resx">
+      <DependentUpon>201910182056561_AddIsSubscribedToNewsletter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
