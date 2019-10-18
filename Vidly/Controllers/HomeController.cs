@@ -22,6 +22,40 @@ namespace Vidly.Controllers
             new Customer {Name = "Juan", Id = 3}
         };
 
+        private readonly List<Movie> _movies = new List<Movie>
+        {
+            new Movie {Name = "Shrek", Id = 1},
+            new Movie{Name = "John Wick", Id = 2}
+        };
+
+        [Route("movies")]
+        public ActionResult Movies()
+        {
+            var viewModel = new MoviesViewModel
+            {
+                Movies = _movies
+            };
+            return View(viewModel);
+        }
+
+        [Route("movie/details/{id}")]
+        public ActionResult MovieDetails(int id)
+        {
+            Movie retMovie = null;
+            foreach(var movie in _movies)
+            {
+                if(movie.Id == id)
+                {
+                    retMovie = movie;
+                    break;
+                }
+            }
+            if (retMovie == null)
+                return HttpNotFound();
+
+            return View(retMovie);
+        }
+
         [Route("customers")]
         public ActionResult Customers()
         {
