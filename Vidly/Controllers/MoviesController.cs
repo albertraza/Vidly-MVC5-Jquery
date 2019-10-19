@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,18 +11,17 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        private MyDbContext _context;
 
-        public IEnumerable<Movie> GetMovies()
+        public MoviesController()
         {
-            var list = new List<Movie>
-            {
-                new Movie() {Name = "Shrek", Id = 1},
-                new Movie() {Name = "John Wick", Id = 2}
-            };
-
-            return list;
+            _context = new MyDbContext();
         }
 
+        protected override void Dispose(bool disposable)
+        {
+            _context.Dispose();
+        }
 
         // GET: Movie/Random
         [Route("movies/random")]
@@ -51,19 +51,8 @@ namespace Vidly.Controllers
         [Route("movies")]
         public ActionResult Index()
         {
-            return View(GetMovies());
-        }
-
-        [Route("movies/{pageIndex}/{sortBy}")]
-        public ActionResult Index(int? pageIndex, string sortBy)
-        {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-
-            if (string.IsNullOrEmpty(sortBy))
-                sortBy = "Name";
-
-            return Content(string.Format("PageIndex = {0} SortBy = {1}", pageIndex, sortBy));
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
+            return View(movies);
         }
 
         [Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2}):range(1, 12)}")]
@@ -82,7 +71,7 @@ namespace Vidly.Controllers
         public ActionResult MovieDetails(int id)
         {
             Movie retMovie = null;
-            foreach (var movie in GetMovies())
+            foreach (var movie in _context.Movies.Include(m => m.Genre).ToList())
             {
                 if (movie.Id == id)
                 {
