@@ -19,6 +19,7 @@
         <thead>
             <tr>
                 <th>Customers</th>
+                <th>Membership Type</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
             {
                 <tr>
                     <td>@Html.ActionLink(customer.Name, "CustomerDetails", new { id = customer.Id })</td>
+                    <td>@customer.MembershipType.DiscountRate%</td>
                 </tr>
             }
         </tbody>
