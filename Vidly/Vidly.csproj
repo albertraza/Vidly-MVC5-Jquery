@@ -180,8 +180,13 @@
     <Compile Include="Migrations\201910190121167_AddMoviesDbSet.Designer.cs">
       <DependentUpon>201910190121167_AddMoviesDbSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910190209406_AddedPropsGenreToMovie.cs" />
+    <Compile Include="Migrations\201910190209406_AddedPropsGenreToMovie.Designer.cs">
+      <DependentUpon>201910190209406_AddedPropsGenreToMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\GenreType.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="MyDbContext.cs" />
@@ -285,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910190121167_AddMoviesDbSet.resx">
       <DependentUpon>201910190121167_AddMoviesDbSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910190209406_AddedPropsGenreToMovie.resx">
+      <DependentUpon>201910190209406_AddedPropsGenreToMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
