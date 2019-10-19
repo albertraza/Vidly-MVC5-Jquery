@@ -176,6 +176,10 @@
     <Compile Include="Migrations\201910190107019_AddCustomerBirthDateAsString.Designer.cs">
       <DependentUpon>201910190107019_AddCustomerBirthDateAsString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910190121167_AddMoviesDbSet.cs" />
+    <Compile Include="Migrations\201910190121167_AddMoviesDbSet.Designer.cs">
+      <DependentUpon>201910190121167_AddMoviesDbSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -278,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910190107019_AddCustomerBirthDateAsString.resx">
       <DependentUpon>201910190107019_AddCustomerBirthDateAsString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910190121167_AddMoviesDbSet.resx">
+      <DependentUpon>201910190121167_AddMoviesDbSet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
