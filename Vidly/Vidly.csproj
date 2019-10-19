@@ -160,6 +160,22 @@
     <Compile Include="Migrations\201910190047503_UpdateMembershipTypeNames.Designer.cs">
       <DependentUpon>201910190047503_UpdateMembershipTypeNames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910190058498_AddBirthDateToCustomer.cs" />
+    <Compile Include="Migrations\201910190058498_AddBirthDateToCustomer.Designer.cs">
+      <DependentUpon>201910190058498_AddBirthDateToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910190102334_AddCustomerBirthDatePropString.cs" />
+    <Compile Include="Migrations\201910190102334_AddCustomerBirthDatePropString.Designer.cs">
+      <DependentUpon>201910190102334_AddCustomerBirthDatePropString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910190105209_deletedCustomerBirthDate.cs" />
+    <Compile Include="Migrations\201910190105209_deletedCustomerBirthDate.Designer.cs">
+      <DependentUpon>201910190105209_deletedCustomerBirthDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910190107019_AddCustomerBirthDateAsString.cs" />
+    <Compile Include="Migrations\201910190107019_AddCustomerBirthDateAsString.Designer.cs">
+      <DependentUpon>201910190107019_AddCustomerBirthDateAsString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -250,6 +266,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910190047503_UpdateMembershipTypeNames.resx">
       <DependentUpon>201910190047503_UpdateMembershipTypeNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910190058498_AddBirthDateToCustomer.resx">
+      <DependentUpon>201910190058498_AddBirthDateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910190102334_AddCustomerBirthDatePropString.resx">
+      <DependentUpon>201910190102334_AddCustomerBirthDatePropString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910190105209_deletedCustomerBirthDate.resx">
+      <DependentUpon>201910190105209_deletedCustomerBirthDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910190107019_AddCustomerBirthDateAsString.resx">
+      <DependentUpon>201910190107019_AddCustomerBirthDateAsString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
