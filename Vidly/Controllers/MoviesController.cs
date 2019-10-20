@@ -48,7 +48,6 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
 
-        [Route("movies")]
         public ActionResult Index()
         {
             var movies = _context.Movies.Include(m => m.Genre).ToList();
@@ -67,8 +66,7 @@ namespace Vidly.Controllers
             return Content("ID = " + id);
         }
 
-        [Route("movie/details/{id}")]
-        public ActionResult MovieDetails(int id)
+        public ActionResult Details(int id)
         {
             Movie retMovie = null;
             foreach (var movie in _context.Movies.Include(m => m.Genre).ToList())
