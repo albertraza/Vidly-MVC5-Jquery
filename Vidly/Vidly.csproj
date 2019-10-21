@@ -192,6 +192,22 @@
     <Compile Include="Migrations\201910201905241_AddedNullableDatetimeCustomer.Designer.cs">
       <DependentUpon>201910201905241_AddedNullableDatetimeCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910202106104_ModStringToDateTimeInMovies.cs" />
+    <Compile Include="Migrations\201910202106104_ModStringToDateTimeInMovies.Designer.cs">
+      <DependentUpon>201910202106104_ModStringToDateTimeInMovies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910202108438_ModPropsMoviesDates.cs" />
+    <Compile Include="Migrations\201910202108438_ModPropsMoviesDates.Designer.cs">
+      <DependentUpon>201910202108438_ModPropsMoviesDates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910202115588_RemProps.cs" />
+    <Compile Include="Migrations\201910202115588_RemProps.Designer.cs">
+      <DependentUpon>201910202115588_RemProps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910202116437_AddDateTimeProps.cs" />
+    <Compile Include="Migrations\201910202116437_AddDateTimeProps.Designer.cs">
+      <DependentUpon>201910202116437_AddDateTimeProps.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\GenreType.cs" />
@@ -199,6 +215,7 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\MoviesFormViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\NewCustomerViewModel.cs" />
     <Compile Include="ViewModels\RandomMoviesViewModel.cs" />
@@ -247,6 +264,7 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MoviesForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -309,6 +327,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910201905241_AddedNullableDatetimeCustomer.resx">
       <DependentUpon>201910201905241_AddedNullableDatetimeCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910202106104_ModStringToDateTimeInMovies.resx">
+      <DependentUpon>201910202106104_ModStringToDateTimeInMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910202108438_ModPropsMoviesDates.resx">
+      <DependentUpon>201910202108438_ModPropsMoviesDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910202115588_RemProps.resx">
+      <DependentUpon>201910202115588_RemProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910202116437_AddDateTimeProps.resx">
+      <DependentUpon>201910202116437_AddDateTimeProps.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
