@@ -22,6 +22,7 @@ namespace Vidly.Models
 
         [Required]
         [Display(Name ="Number in Stock")]
+        [NunInStockBetwen1And20]
         public byte NumberInStock { get; set; }
 
         public GenreType Genre { get; set; }
