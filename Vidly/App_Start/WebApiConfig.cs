@@ -11,6 +11,7 @@ namespace Vidly
     {
         public static void Register(HttpConfiguration config)
         {
+            // these lines are to fix camel casing in Json formatting
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Formatting.Indented;
