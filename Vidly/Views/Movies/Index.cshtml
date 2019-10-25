@@ -24,7 +24,7 @@
 {
     <script>
         $(document).ready(function () {
-            $("#movies").dataTable({
+            var table = $("#movies").DataTable({
                 ajax: {
                     url: "/api/movies",
                     dataSrc: ""
@@ -37,7 +37,7 @@
                         }
                     },
                     {
-                        data: "name"
+                        data: "genre.name"
                     },
                     {
                         data: "id",
@@ -59,7 +59,8 @@
                             url: "/api/movies/" + button.attr("data-movie-id"),
                             method: "DELETE",
                             success: function () {
-                                button.parents("tr").remove();
+                                table.row(button.parents("tr")).remove().draw();
+                                
                             }
                         });
                     }
