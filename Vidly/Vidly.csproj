@@ -142,6 +142,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Controllers\Api\RentalsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="DTOs\GenreTypeDto.cs" />
     <Compile Include="DTOs\MembershipTypeDto.cs" />
     <Compile Include="DTOs\MovieDto.cs" />
+    <Compile Include="DTOs\RentalDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,6 +230,38 @@
     <Compile Include="Migrations\201910202116437_AddDateTimeProps.Designer.cs">
       <DependentUpon>201910202116437_AddDateTimeProps.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910282030542_AddRental.cs" />
+    <Compile Include="Migrations\201910282030542_AddRental.Designer.cs">
+      <DependentUpon>201910282030542_AddRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910282033302_AddDateAddedAndReturnedToRentals.cs" />
+    <Compile Include="Migrations\201910282033302_AddDateAddedAndReturnedToRentals.Designer.cs">
+      <DependentUpon>201910282033302_AddDateAddedAndReturnedToRentals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910290149237_Empty.cs" />
+    <Compile Include="Migrations\201910290149237_Empty.Designer.cs">
+      <DependentUpon>201910290149237_Empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910290154406_updatedToByteIdMovies.cs" />
+    <Compile Include="Migrations\201910290154406_updatedToByteIdMovies.Designer.cs">
+      <DependentUpon>201910290154406_updatedToByteIdMovies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910290210146_DeletedRentalsProps.cs" />
+    <Compile Include="Migrations\201910290210146_DeletedRentalsProps.Designer.cs">
+      <DependentUpon>201910290210146_DeletedRentalsProps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910290210472_ReaddedRentalsProps.cs" />
+    <Compile Include="Migrations\201910290210472_ReaddedRentalsProps.Designer.cs">
+      <DependentUpon>201910290210472_ReaddedRentalsProps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910290213211_RemovedRentalsTable.cs" />
+    <Compile Include="Migrations\201910290213211_RemovedRentalsTable.Designer.cs">
+      <DependentUpon>201910290213211_RemovedRentalsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910290214034_AddedBackRentals.cs" />
+    <Compile Include="Migrations\201910290214034_AddedBackRentals.Designer.cs">
+      <DependentUpon>201910290214034_AddedBackRentals.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\GenreType.cs" />
@@ -235,6 +269,7 @@
     <Compile Include="Models\Min18YearsIfMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\NunInStockBetwen1And20.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MoviesFormViewModel.cs" />
@@ -536,6 +571,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910202116437_AddDateTimeProps.resx">
       <DependentUpon>201910202116437_AddDateTimeProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910282030542_AddRental.resx">
+      <DependentUpon>201910282030542_AddRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910282033302_AddDateAddedAndReturnedToRentals.resx">
+      <DependentUpon>201910282033302_AddDateAddedAndReturnedToRentals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910290149237_Empty.resx">
+      <DependentUpon>201910290149237_Empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910290154406_updatedToByteIdMovies.resx">
+      <DependentUpon>201910290154406_updatedToByteIdMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910290210146_DeletedRentalsProps.resx">
+      <DependentUpon>201910290210146_DeletedRentalsProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910290210472_ReaddedRentalsProps.resx">
+      <DependentUpon>201910290210472_ReaddedRentalsProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910290213211_RemovedRentalsTable.resx">
+      <DependentUpon>201910290213211_RemovedRentalsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910290214034_AddedBackRentals.resx">
+      <DependentUpon>201910290214034_AddedBackRentals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
