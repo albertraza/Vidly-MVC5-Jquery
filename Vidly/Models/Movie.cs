@@ -25,6 +25,9 @@ namespace Vidly.Models
         [NunInStockBetwen1And20]
         public byte NumberInStock { get; set; }
 
+        [Required]
+        public byte NumberAvailable { get; set; }
+
         public GenreType Genre { get; set; }
 
         [Required]
