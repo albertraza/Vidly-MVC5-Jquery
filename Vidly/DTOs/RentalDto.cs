@@ -8,6 +8,6 @@ namespace Vidly.DTOs
     public class RentalDto
     {
         public byte CustomerId { get; set; }
-        public IEnumerable<byte> MoviesId { get; set; }
+        public List<byte> MoviesId { get; set; }
     }
 }
