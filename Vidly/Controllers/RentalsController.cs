@@ -13,5 +13,10 @@ namespace Vidly.Controllers
         {
             return View("NewRentalsForm");
         }
+
+        public ActionResult ViewRental()
+        {
+            return View();
+        }
     }
 }

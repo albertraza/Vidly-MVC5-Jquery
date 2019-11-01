@@ -516,6 +516,7 @@
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Movies\MoviesForm.cshtml" />
     <Content Include="Views\Rentals\NewRentalsForm.cshtml" />
+    <Content Include="Views\Rentals\ViewRental.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

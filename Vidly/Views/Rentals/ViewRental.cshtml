@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "ViewRental";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Rental</h2>
+
+<form>
+    <div class="form-group">
+        <label>Customer</label>
+        <input type="text" class="form-control" name="customer" id="customer" />
+    </div>
+
+    <table id="movies" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Movie</th>
+                <th>Date Rented</th>
+                <th>Return</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    
+</form>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+
+    <script>
+        $(document).ready(function () {
+
+            var viewModel = { customer: null, rentals: [] };
+            var table;
+
+            var customers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/customers?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#customer').typeahead(null, {
+                name: 'customer',
+                display: 'name',
+                source: customers
+            }).on("typeahead:select", function (e, customer) {
+
+                if ($.fn.dataTable.isDataTable("#movies")) { table.destroy(); }
+
+                viewModel.customer = customer;
+
+                // rendering table
+                table = $("#movies").DataTable({
+                    ajax: {
+                        url: "/api/rentals/" + customer.id,
+                        dataSrc: ""
+                    },
+                    columns: [
+                        {
+                            data: "movie.name"
+                        },
+                        {
+                            data: "dateAdded",
+                            render: function (data) {
+                                return new Date(data).toLocaleDateString();
+                            }
+                        },
+                        {
+                            data: "id",
+                            render: function (data) {
+                                return "<button id='retornar' class ='btn-link' data-rental-id='" + data + "'>Return</button>";
+                            }
+                        }
+                    ]
+                });
+
+             });
+
+            $("movies").on("click", "#retornar", function () {
+                confirm("Done");
+            });
+
+        });
+    </script>
+
+    }
+

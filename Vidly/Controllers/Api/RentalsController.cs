@@ -27,6 +27,20 @@ namespace Vidly.Controllers.Api
             return Ok(rentals);
         }
 
+        public IHttpActionResult GetRental(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return BadRequest("the customer does not exist");
+
+            var rentals = _context.Rentals.Include(r => r.Customer).Include(r => r.Movie).Where((r => r.Customer.Id == id));
+
+            rentals = rentals.Where(r => r.DateReturned == null);
+
+            return Ok(rentals);
+        }
+
         [HttpPost]
         public IHttpActionResult NewRental(RentalDto newRental)
         {
@@ -57,6 +71,22 @@ namespace Vidly.Controllers.Api
 
                 _context.Rentals.Add(rental);
             }
+
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpPut]
+        public IHttpActionResult Return(int id)
+        {
+            var rental = _context.Rentals.SingleOrDefault(r => r.Id == id);
+
+            if (rental == null)
+                return NotFound();
+
+            rental.DateReturned = DateTime.Today;
+            rental.Movie.NumberAvailable++;
 
             _context.SaveChanges();
 
