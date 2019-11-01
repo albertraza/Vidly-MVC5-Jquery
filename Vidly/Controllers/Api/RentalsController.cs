@@ -22,14 +22,9 @@ namespace Vidly.Controllers.Api
 
         public IHttpActionResult GetRental()
         {
-            List<byte> movies = new List<byte> { 1, 2, 3, 4, 5 };
-            var rental = new RentalDto
-            {
-                CustomerId = 1,
-                MoviesId = movies
-            };
+            var rentals = _context.Rentals.Include(r => r.Customer).Include(r => r.Movie).ToList();
 
-            return Ok(rental);
+            return Ok(rentals);
         }
 
         [HttpPost]

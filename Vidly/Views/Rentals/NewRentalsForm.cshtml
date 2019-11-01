@@ -4,16 +4,126 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>NewRentalsForm</h2>
+<h2>New Rentals</h2>
 
-<form>
+<form id="newRental">
     <div class="form-group">
         <label>Customer</label>
-        <input type="text" class="form-control" />
+        <div class="tt-container">
+            <input required name="customer" data-rule-validCustomer="true" id="customer" type="text" class="form-control" />
+        </div>
     </div>
     <div class="form-group">
         <label>Movie</label>
-        <input type="text" class="form-control" />
+        <div class="tt-container">
+            <input  name="movie" data-rule-validMovies="true" id="movie" type="text" class="form-control" />
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-4 col-md-4">
+            <ul id="movies" class="list-group">
+
+            </ul>
+        </div>
+    </div>
+
     <button class="btn btn-primary">Submit</button>
 </form>
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval");
+
+    <script>
+        $(document).ready(function () {
+            var viewModel = {
+                moviesId: []
+            };
+
+            var customers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/customers?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#customer').typeahead({
+                minlengh: 3,
+                highlight: true
+            }, {
+                name: 'customers',
+                display: 'name',
+                    source: customers
+                }).on("typeahead:select", function (e, customer) {
+                    viewModel.customerId = customer.id;
+                });
+
+            $(document).ready(function () {
+                var movies = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    remote: {
+                        url: '/api/movies?query=%QUERY',
+                        wildcard: '%QUERY'
+                    }
+                });
+
+                $('#movie').typeahead({
+                    minlengh: 3,
+                    highlight: true
+                }, {
+                        name: 'movie',
+                        display: 'name',
+                        source: movies
+                    }).on("typeahead:select", function (e, movie) {
+                        $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
+
+                        $("#movie").typeahead("val", "");
+
+                        viewModel.moviesId.push(movie.id);
+                    });
+            });
+
+            $.validator.addMethod("validCustomer", function () {
+                return viewModel.customerId && viewModel.customerId !== 0;
+            }, "Please select a valid customer");
+
+            $.validator.addMethod("validMovies", function () {
+                return viewModel.moviesId.length > 0;
+            }, "Please select a movie to order");
+
+            var validator = $("#newRental").validate(
+                {
+                    submitHandler: function () {
+
+                        $.ajax({
+                            url: "/api/rentals",
+                            method: "post",
+                            data: viewModel
+                        }).done(function () {
+                            toastr.success("Rentals successfully recorded.");
+
+                            $("#movie").typeahead("val", "");
+                            $("#customer").typeahead("val", "");
+                            $("#movies").empty();
+
+                            viewModel.customerId = 0;
+                            viewModel.moviesId = [];
+
+                            validator.resetForm();
+
+                        }).fail(function () {
+                            toastr.error("An unexpected error ocurred.");
+                            });
+
+                        return false;
+                    }
+                }
+            );
+
+        });
+    </script>
+}
