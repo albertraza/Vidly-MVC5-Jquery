@@ -74,7 +74,7 @@
                         {
                             data: "id",
                             render: function (data) {
-                                return "<button id='retornar' class ='btn-link' data-rental-id='" + data + "'>Return</button>";
+                                return "<button class ='btn-link retornar' data-rental-id='" + data + "'>Return</button>";
                             }
                         }
                     ]
@@ -82,8 +82,23 @@
 
              });
 
-            $("movies").on("click", "#retornar", function () {
-                confirm("Done");
+            $("#movies").on("click", ".retornar", function (e) {
+
+                e.preventDefault();
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to return the movie?", function (result) {
+
+                    if (result) {
+                        $.ajax({
+                            url: "/api/rentals/" + button.attr("data-rental-id"),
+                            method: "PUT",
+                            success: function () {
+                                console.log("Success");
+                            }
+                        });
+                    }
+                });
             });
 
         });

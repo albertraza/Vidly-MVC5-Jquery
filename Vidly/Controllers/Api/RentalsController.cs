@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Vidly.DTOs;
 using Vidly.Models;
+using AutoMapper;
 
 namespace Vidly.Controllers.Api
 {
@@ -78,19 +79,18 @@ namespace Vidly.Controllers.Api
         }
 
         [HttpPut]
-        public IHttpActionResult Return(int id)
+        public RentalDto Return(int id)
         {
-            var rental = _context.Rentals.SingleOrDefault(r => r.Id == id);
+            var rental = _context.Rentals.Include(m => m.Movie).SingleOrDefault(r => r.Id == id);
 
-            if (rental == null)
-                return NotFound();
+            var rentalDto = Mapper.Map<Rental, RentalDto>(rental);
 
             rental.DateReturned = DateTime.Today;
             rental.Movie.NumberAvailable++;
 
             _context.SaveChanges();
 
-            return Ok();
+            return rentalDto;
         }
     }
 }
